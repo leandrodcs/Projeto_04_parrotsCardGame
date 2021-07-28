@@ -1,0 +1,42 @@
+* {
+  box-sizing: border-box;
+}
+body {
+  background: #eef9bf;
+}
+
+.header {
+  font-family: roboto;
+  font-weight: 700;
+  color: #75b79e;
+  font-size: 56px;
+  text-align: center;
+  padding: 40px 0 47px 0;
+  margin: 0 20px 0 20px;
+}
+
+.container {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 34px;
+  margin: 0 180px 0 180px;
+}
+.card {
+  background: #a7e9af;
+  width: 117px;
+  height: 146px;
+  border-radius: 5px;
+  border: 1px solid #99cea8;
+  padding: 23px 8.5px 23px 8.5px;
+}
+.card img {
+  width: 100px;
+  height: 100px;
+}
+
+@font-face {
+  font-family: roboto;
+  src: url(../assets/Roboto-Bold.ttf);
+  font-weight: 700;
+}
