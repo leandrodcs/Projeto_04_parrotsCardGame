@@ -58,6 +58,7 @@ function checkIfCardsMatch() {
       playedCards[1].classList.add("completed");
       let correctCards = document.querySelectorAll(".completed");
       if (correctCards.length === numberOfCards) {
+        document.querySelector(".clock").classList.add("vanish");
         setTimeout(() => {
           if (seconds < 10) {
             alert(
@@ -104,6 +105,7 @@ function newGame() {
   if (userWantsToReplay !== "sim") {
     return;
   }
+  document.querySelector(".clock").classList.remove("vanish");
   document.querySelector(".container").innerHTML = "";
   cardList = [
     card1,

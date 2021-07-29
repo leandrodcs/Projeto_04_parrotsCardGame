@@ -47,6 +47,10 @@ body {
   top: 10px;
   left: 10px;
   background: white;
+  font-family: sans-serif;
+  color: #75b79e;
+  background: #eef9bf;
+  font-size: 20px;
 }
 
 @font-face {
