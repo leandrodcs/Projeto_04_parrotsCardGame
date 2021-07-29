@@ -42,6 +42,12 @@ body {
 .completed {
   pointer-events: none;
 }
+.clock {
+  position: fixed;
+  top: 10px;
+  left: 10px;
+  background: white;
+}
 
 @font-face {
   font-family: roboto;
@@ -89,7 +95,7 @@ body {
   }
 
 
-@media (max-width: 615px) {
+@media (max-width: 616px) {
   .header {
     font-size: 36px;
     line-height: 42px;

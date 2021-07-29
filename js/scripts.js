@@ -21,6 +21,8 @@ let cardList = [
   card7,
   card7,
 ];
+let seconds = 0;
+let minutes = 0;
 let wait = false;
 let numberOfPlays = 0;
 let numberOfCards = Number(prompt("Com quantas cartas quer jogar?"));
@@ -34,6 +36,7 @@ for (i = 0; i < numberOfCards; i++) {
   let gameCards = document.querySelector(".container");
   gameCards.innerHTML += cardList[i];
 }
+setInterval(clock, 1000);
 
 function turnCard(cardSelected) {
   if (wait === true) {
@@ -54,7 +57,15 @@ function checkIfCardsMatch() {
       playedCards[1].classList.add("completed");
       let correctCards = document.querySelectorAll(".completed");
       if (correctCards.length === numberOfCards) {
-        alert(`Você ganhou em ${numberOfPlays} jogadas!`);
+        if (seconds < 10) {
+          alert(
+            `Você ganhou em ${numberOfPlays} jogadas! Tempo 0${minutes}:0${seconds}`
+          );
+          return;
+        }
+        alert(
+          `Você ganhou em ${numberOfPlays} jogadas! Tempo 0${minutes}:${seconds}`
+        );
         return;
       }
     } else {
@@ -65,6 +76,19 @@ function checkIfCardsMatch() {
         wait = false;
       }, 1000);
     }
+  }
+}
+function clock() {
+  if (seconds <= 9) {
+    document.querySelector(".clock").innerHTML = `0${minutes}:0${seconds}`;
+    seconds++;
+  } else if (seconds >= 10 && seconds < 19) {
+    document.querySelector(".clock").innerHTML = `0${minutes}:${seconds}`;
+    seconds++;
+  } else if (seconds >= 19) {
+    document.querySelector(".clock").innerHTML = `0${minutes}:${seconds}`;
+    seconds = 0;
+    minutes++;
   }
 }
 
