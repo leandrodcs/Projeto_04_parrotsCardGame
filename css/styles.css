@@ -10,6 +10,7 @@ body {
   font-weight: 700;
   color: #75b79e;
   font-size: 56px;
+  line-height: 66px;
   text-align: center;
   padding: 40px 0 47px 0;
   margin: 0 20px 0 20px;
@@ -20,12 +21,11 @@ body {
   justify-content: center;
   flex-wrap: wrap;
   gap: 34px;
-  margin: 0 180px 0 180px;
+  margin: 0 450px 0 450px;
 }
 .card {
   width: 117px;
   height: 146px;
-
   position: relative;
 }
 .parrot {
@@ -82,4 +82,24 @@ body {
 
 .completed .front-face {
   transform: rotateY(-180deg);
+}
+@media (max-width: 1400px) {
+  .container {
+    margin: 0 175px 0 175px;
+  }
+
+
+@media (max-width: 615px) {
+  .header {
+    font-size: 36px;
+    line-height: 42px;
+  }
+  .container {
+    margin: 0 100px 0 100px;
+  }
+}
+@media (max-width: 330px)  {
+  .container {
+    margin: 0 60px 0 60px;
+  }
 }
