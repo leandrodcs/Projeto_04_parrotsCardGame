@@ -1,10 +1,10 @@
-let card1 = `<div class="card" onclick="turnCard(this)"><img class="parrot" src="assets/front.png" /><img class="gif vanish" src="assets/bobrossparrot.gif" /></div>`;
-let card2 = `<div class="card" onclick="turnCard(this)"><img class="parrot" src="assets/front.png" /><img class="gif vanish" src="assets/explodyparrot.gif" /></div>`;
-let card3 = `<div class="card" onclick="turnCard(this)"><img class="parrot" src="assets/front.png" /><img class="gif vanish" src="assets/fiestaparrot.gif" /></div>`;
-let card4 = `<div class="card" onclick="turnCard(this)"><img class="parrot" src="assets/front.png" /><img class="gif vanish" src="assets/metalparrot.gif" /></div>`;
-let card5 = `<div class="card" onclick="turnCard(this)"><img class="parrot" src="assets/front.png" /><img class="gif vanish" src="assets/revertitparrot.gif" /></div>`;
-let card6 = `<div class="card" onclick="turnCard(this)"><img class="parrot" src="assets/front.png" /><img class="gif vanish" src="assets/tripletsparrot.gif" /></div>`;
-let card7 = `<div class="card" onclick="turnCard(this)"><img class="parrot" src="assets/front.png" /><img class="gif vanish" src="assets/unicornparrot.gif" /></div>`;
+let card1 = `<div class="card" onclick="turnCard(this)"><div class="front-face face"><img class="parrot" src="assets/front.png" /></div><div class="back-face face"><img class="gif" src="assets/bobrossparrot.gif" /></div></div>`;
+let card2 = `<div class="card" onclick="turnCard(this)"><div class="front-face face"><img class="parrot" src="assets/front.png" /></div><div class="back-face face"><img class="gif" src="assets/explodyparrot.gif" /></div></div>`;
+let card3 = `<div class="card" onclick="turnCard(this)"><div class="front-face face"><img class="parrot" src="assets/front.png" /></div><div class="back-face face"><img class="gif" src="assets/fiestaparrot.gif" /></div></div>`;
+let card4 = `<div class="card" onclick="turnCard(this)"><div class="front-face face"><img class="parrot" src="assets/front.png" /></div><div class="back-face face"><img class="gif" src="assets/metalparrot.gif" /></div></div>`;
+let card5 = `<div class="card" onclick="turnCard(this)"><div class="front-face face"><img class="parrot" src="assets/front.png" /></div><div class="back-face face"><img class="gif" src="assets/revertitparrot.gif" /></div></div>`;
+let card6 = `<div class="card" onclick="turnCard(this)"><div class="front-face face"><img class="parrot" src="assets/front.png" /></div><div class="back-face face"><img class="gif" src="assets/tripletsparrot.gif" /></div></div>`;
+let card7 = `<div class="card" onclick="turnCard(this)"><div class="front-face face"><img class="parrot" src="assets/front.png" /></div><div class="back-face face"><img class="gif" src="assets/unicornparrot.gif" /></div></div>`;
 let cardList = [
   card1,
   card1,
@@ -41,10 +41,6 @@ function turnCard(cardSelected) {
   }
   numberOfPlays++;
   cardSelected.classList.add("selected");
-  let parrot = cardSelected.childNodes[0];
-  parrot.classList.add("vanish");
-  let gif = cardSelected.childNodes[1];
-  gif.classList.remove("vanish");
   checkIfCardsMatch();
 }
 function checkIfCardsMatch() {
@@ -57,7 +53,6 @@ function checkIfCardsMatch() {
       playedCards[1].classList.remove("selected");
       playedCards[1].classList.add("completed");
       let correctCards = document.querySelectorAll(".completed");
-      console.log(correctCards);
       if (correctCards.length === numberOfCards) {
         alert(`Você ganhou em ${numberOfPlays} jogadas!`);
         return;
@@ -65,11 +60,7 @@ function checkIfCardsMatch() {
     } else {
       wait = true;
       setTimeout(() => {
-        playedCards[0].childNodes[0].classList.remove("vanish");
-        playedCards[0].childNodes[1].classList.add("vanish");
         playedCards[0].classList.remove("selected");
-        playedCards[1].childNodes[0].classList.remove("vanish");
-        playedCards[1].childNodes[1].classList.add("vanish");
         playedCards[1].classList.remove("selected");
         wait = false;
       }, 1000);

@@ -23,12 +23,9 @@ body {
   margin: 0 180px 0 180px;
 }
 .card {
-  background: #a7e9af;
   width: 117px;
   height: 146px;
-  border-radius: 5px;
-  border: 1px solid #99cea8;
-  padding: 23px 8.5px 23px 8.5px;
+
   position: relative;
 }
 .parrot {
@@ -50,4 +47,39 @@ body {
   font-family: roboto;
   src: url(../assets/Roboto-Bold.ttf);
   font-weight: 700;
+}
+
+.face {
+  padding: 23px 8.5px 23px 8.5px;
+  border: 1px solid #99cea8;
+  border-radius: 5px;
+  background: #a7e9af;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 117px;
+  height: 146px;
+  background-color: #a7e9af;
+  box-shadow: 1px 1px 1px rgba(0, 0, 0, 0.3);
+  backface-visibility: hidden;
+  transition: all 0.5s;
+  transform-style: preserve-3d;
+}
+.back-face {
+  transform: rotateY(180deg);
+}
+
+.selected .back-face {
+  transform: rotateY(0deg);
+}
+
+.selected .front-face {
+  transform: rotateY(-180deg);
+}
+.completed .back-face {
+  transform: rotateY(0deg);
+}
+
+.completed .front-face {
+  transform: rotateY(-180deg);
 }
