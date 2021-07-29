@@ -42,6 +42,9 @@ body {
 .vanish {
   display: none;
 }
+.completed {
+  pointer-events: none;
+}
 
 @font-face {
   font-family: roboto;
