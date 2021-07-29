@@ -29,10 +29,18 @@ body {
   border-radius: 5px;
   border: 1px solid #99cea8;
   padding: 23px 8.5px 23px 8.5px;
+  position: relative;
 }
-.card img {
+.parrot {
   width: 100px;
   height: 100px;
+}
+.gif {
+  width: 100px;
+  height: 100px;
+}
+.vanish {
+  display: none;
 }
 
 @font-face {
