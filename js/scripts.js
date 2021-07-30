@@ -23,10 +23,11 @@ let cardList = [
 ];
 let seconds = 0;
 let minutes = 0;
+let timing;
+let countTime = true;
 let wait = false;
 let numberOfPlays = 0;
 let numberOfCards = Number(prompt("Com quantas cartas quer jogar?"));
-
 while (numberOfCards < 4 || numberOfCards > 14 || numberOfCards % 2 !== 0) {
   numberOfCards = Number(prompt("Com quantas cartas quer jogar?"));
 }
@@ -37,19 +38,21 @@ for (i = 0; i < numberOfCards; i++) {
   gameCards.innerHTML += cardList[i];
 }
 
-let timing = setInterval(clock, 1000);
-
 function turnCard(cardSelected) {
   if (wait === true) {
     return;
+  }
+  if (countTime === true) {
+    timing = setInterval(clock, 1000);
+    countTime = false;
   }
   numberOfPlays++;
   cardSelected.classList.add("selected");
   checkIfCardsMatch();
 }
+
 function checkIfCardsMatch() {
   let playedCards = document.querySelectorAll(".selected");
-
   if (playedCards.length === 2) {
     if (playedCards[0].innerHTML === playedCards[1].innerHTML) {
       playedCards[0].classList.remove("selected");
@@ -58,19 +61,7 @@ function checkIfCardsMatch() {
       playedCards[1].classList.add("completed");
       let correctCards = document.querySelectorAll(".completed");
       if (correctCards.length === numberOfCards) {
-        document.querySelector(".clock").classList.add("vanish");
-        setTimeout(() => {
-          if (seconds < 10) {
-            alert(
-              `Você ganhou em ${numberOfPlays} jogadas! Tempo 0${minutes}:0${seconds}`
-            );
-          } else {
-            alert(
-              `Você ganhou em ${numberOfPlays} jogadas! Tempo 0${minutes}:${seconds}`
-            );
-          }
-          newGame();
-        }, 300);
+        setTimeout(finalMessage, 300);
       }
     } else {
       wait = true;
@@ -84,15 +75,15 @@ function checkIfCardsMatch() {
 }
 function clock() {
   if (seconds <= 9) {
+    seconds++;
     document.querySelector(".clock").innerHTML = `0${minutes}:0${seconds}`;
-    seconds++;
   } else if (seconds >= 10 && seconds < 59) {
-    document.querySelector(".clock").innerHTML = `0${minutes}:${seconds}`;
     seconds++;
-  } else if (seconds >= 59) {
     document.querySelector(".clock").innerHTML = `0${minutes}:${seconds}`;
+  } else if (seconds >= 59) {
     seconds = 0;
     minutes++;
+    document.querySelector(".clock").innerHTML = `0${minutes}:${seconds}`;
   }
 }
 
@@ -102,10 +93,15 @@ function shuffle() {
 
 function newGame() {
   let userWantsToReplay = prompt("Deseja jogar esse jogasso de novo?");
-  if (userWantsToReplay !== "sim") {
+  if (
+    userWantsToReplay !== "sim" &&
+    userWantsToReplay !== "Sim" &&
+    userWantsToReplay !== "S" &&
+    userWantsToReplay !== "s"
+  ) {
     return;
   }
-  document.querySelector(".clock").classList.remove("vanish");
+  document.querySelector(".clock").innerHTML = "00:00";
   document.querySelector(".container").innerHTML = "";
   cardList = [
     card1,
@@ -138,4 +134,23 @@ function newGame() {
     let gameCards = document.querySelector(".container");
     gameCards.innerHTML += cardList[i];
   }
+}
+
+function finalMessage() {
+  stopClock();
+  countTime = true;
+  if (seconds < 10) {
+    alert(
+      `Você ganhou em ${numberOfPlays} jogadas! Tempo: 0${minutes}:0${seconds}`
+    );
+  } else {
+    alert(
+      `Você ganhou em ${numberOfPlays} jogadas! Tempo: 0${minutes}:${seconds}`
+    );
+  }
+  newGame();
+}
+
+function stopClock() {
+  clearInterval(timing);
 }

@@ -1,3 +1,10 @@
+@font-face {
+  font-family: roboto;
+  src: url(../assets/Roboto-Bold.ttf);
+  font-weight: 700;
+}
+/* MAIN CSS */
+
 * {
   box-sizing: border-box;
 }
@@ -53,12 +60,6 @@ body {
   font-size: 20px;
 }
 
-@font-face {
-  font-family: roboto;
-  src: url(../assets/Roboto-Bold.ttf);
-  font-weight: 700;
-}
-
 .face {
   padding: 23px 8.5px 23px 8.5px;
   border: 1px solid #99cea8;
@@ -79,10 +80,11 @@ body {
   transform: rotateY(180deg);
 }
 
+/* JAVA SCRIPT */
+
 .selected .back-face {
   transform: rotateY(0deg);
 }
-
 .selected .front-face {
   transform: rotateY(-180deg);
 }
@@ -93,12 +95,13 @@ body {
 .completed .front-face {
   transform: rotateY(-180deg);
 }
+
+/* MEDIA */
+
 @media (max-width: 1400px) {
   .container {
     margin: 0 175px 0 175px;
   }
-
-
 @media (max-width: 616px) {
   .header {
     font-size: 36px;
@@ -113,3 +116,6 @@ body {
     margin: 0 60px 0 60px;
   }
 }
+
+/* FONTS */
+
