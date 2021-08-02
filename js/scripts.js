@@ -5,22 +5,7 @@ let card4 = `<div class="card" onclick="turnCard(this)"><div class="front-face f
 let card5 = `<div class="card" onclick="turnCard(this)"><div class="front-face face"><img class="parrot" src="assets/front.png" /></div><div class="back-face face"><img class="gif" src="assets/revertitparrot.gif" /></div></div>`;
 let card6 = `<div class="card" onclick="turnCard(this)"><div class="front-face face"><img class="parrot" src="assets/front.png" /></div><div class="back-face face"><img class="gif" src="assets/tripletsparrot.gif" /></div></div>`;
 let card7 = `<div class="card" onclick="turnCard(this)"><div class="front-face face"><img class="parrot" src="assets/front.png" /></div><div class="back-face face"><img class="gif" src="assets/unicornparrot.gif" /></div></div>`;
-let cardList = [
-  card1,
-  card1,
-  card2,
-  card2,
-  card3,
-  card3,
-  card4,
-  card4,
-  card5,
-  card5,
-  card6,
-  card6,
-  card7,
-  card7,
-];
+let cardList = [card1,card1,card2,card2,card3,card3,card4,card4,card5,card5,card6,card6,card7,card7,];
 let seconds = 0;
 let minutes = 0;
 let timing;
@@ -37,7 +22,6 @@ for (i = 0; i < numberOfCards; i++) {
   let gameCards = document.querySelector(".container");
   gameCards.innerHTML += cardList[i];
 }
-
 function turnCard(cardSelected) {
   if (wait === true) {
     return;
@@ -50,7 +34,6 @@ function turnCard(cardSelected) {
   cardSelected.classList.add("selected");
   checkIfCardsMatch();
 }
-
 function checkIfCardsMatch() {
   let playedCards = document.querySelectorAll(".selected");
   if (playedCards.length === 2) {
@@ -74,51 +57,28 @@ function checkIfCardsMatch() {
   }
 }
 function clock() {
-  if (seconds <= 9) {
+  if (seconds < 9) {
     seconds++;
     document.querySelector(".clock").innerHTML = `0${minutes}:0${seconds}`;
-  } else if (seconds >= 10 && seconds < 59) {
+  } else if (seconds >= 9 && seconds < 19) {
     seconds++;
     document.querySelector(".clock").innerHTML = `0${minutes}:${seconds}`;
-  } else if (seconds >= 59) {
+  } else if (seconds >= 19) {
     seconds = 0;
     minutes++;
-    document.querySelector(".clock").innerHTML = `0${minutes}:${seconds}`;
+    document.querySelector(".clock").innerHTML = `0${minutes}:0${seconds}`;
   }
 }
-
 function shuffle() {
   return Math.random() - 0.5;
 }
-
 function newGame() {
-  let userWantsToReplay = prompt("Deseja jogar esse jogasso de novo?");
-  if (
-    userWantsToReplay !== "sim" &&
-    userWantsToReplay !== "Sim" &&
-    userWantsToReplay !== "S" &&
-    userWantsToReplay !== "s"
-  ) {
+  if (!confirm("Deseja jogar novamente?")) {
     return;
   }
   document.querySelector(".clock").innerHTML = "00:00";
   document.querySelector(".container").innerHTML = "";
-  cardList = [
-    card1,
-    card1,
-    card2,
-    card2,
-    card3,
-    card3,
-    card4,
-    card4,
-    card5,
-    card5,
-    card6,
-    card6,
-    card7,
-    card7,
-  ];
+  cardList = [card1,card1,card2,card2,card3,card3,card4,card4,card5,card5,card6,card6,card7,card7,];
   seconds = 0;
   minutes = 0;
   count = true;
@@ -135,7 +95,6 @@ function newGame() {
     gameCards.innerHTML += cardList[i];
   }
 }
-
 function finalMessage() {
   stopClock();
   countTime = true;
@@ -150,7 +109,6 @@ function finalMessage() {
   }
   newGame();
 }
-
 function stopClock() {
   clearInterval(timing);
 }
